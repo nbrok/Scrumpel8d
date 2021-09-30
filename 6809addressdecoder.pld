@@ -1,14 +1,13 @@
-GAL22V10  ; Addressdecoder for 6809 Scrumpel 8
-22V10  ;                second line: any text (max. 8 char.)
+GAL22V10 
+addecode 
 
   E   AD15  AD14   AD13   AD12   AD11    AD10  AD09  AD08 AD07 AD06 GND
 AD05  CSROM CSRAM  IOSEL  CSCOM  CSPAR  CSPIA CSAUX   RW   RD   WR  VCC
 
-/IOSEL =  AD15 * AD14 * /AD13 * /AD12 * 
-          AD11 * AD10 * AD09 * AD08 
+/IOSEL =  AD15 * AD14 * /AD13 * /AD12 * AD11 * AD10 * AD09 * AD08 
 
-/CSROM = AD15 * AD14 * IOSEL
-/CSRAM = CSROM * IOSEL
+/CSROM = CSRAM * IOSEL
+/CSRAM = /AD15 + AD15 * /AD14
 
 /CSCOM = /AD07 * /AD06 * /AD05 * /IOSEL
 /CSPAR = /AD07 * /AD06 *  AD05 * /IOSEL
@@ -18,6 +17,6 @@ AD05  CSROM CSRAM  IOSEL  CSCOM  CSPAR  CSPIA CSAUX   RW   RD   WR  VCC
 /RD = RW * E
 /WR = /RW * E
 
-DESCRIPTION:
+DESCRIPTION
 
 Addressdecode for 6809
